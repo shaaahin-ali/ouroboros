@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/slither-link/static/css/main.700d9d39.css",
-    "main.js": "/slither-link/static/js/main.451bd401.js",
-    "static/js/787.2876fcfa.chunk.js": "/slither-link/static/js/787.2876fcfa.chunk.js",
-    "index.html": "/slither-link/index.html",
-    "main.700d9d39.css.map": "/slither-link/static/css/main.700d9d39.css.map",
-    "main.451bd401.js.map": "/slither-link/static/js/main.451bd401.js.map",
-    "787.2876fcfa.chunk.js.map": "/slither-link/static/js/787.2876fcfa.chunk.js.map"
+    "main.css": "/ouroboros/static/css/main.3f7a1100.css",
+    "main.js": "/ouroboros/static/js/main.ad8eb077.js",
+    "static/js/787.69de6608.chunk.js": "/ouroboros/static/js/787.69de6608.chunk.js",
+    "index.html": "/ouroboros/index.html",
+    "main.3f7a1100.css.map": "/ouroboros/static/css/main.3f7a1100.css.map",
+    "main.ad8eb077.js.map": "/ouroboros/static/js/main.ad8eb077.js.map",
+    "787.69de6608.chunk.js.map": "/ouroboros/static/js/787.69de6608.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.700d9d39.css",
-    "static/js/main.451bd401.js"
+    "static/css/main.3f7a1100.css",
+    "static/js/main.ad8eb077.js"
   ]
 }
