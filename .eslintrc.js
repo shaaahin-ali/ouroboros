@@ -85,3 +85,4 @@ module.exports = {
     "import/ignore": ["node_modules", ".json$", ".(scss|css)$"],
   },
 };
+

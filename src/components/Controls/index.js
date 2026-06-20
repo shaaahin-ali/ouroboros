@@ -48,3 +48,4 @@ const Controls = ({onRefresh, onReset, onUndo, onRedo, editorMode}) => {
 };
 
 export default Controls;
+

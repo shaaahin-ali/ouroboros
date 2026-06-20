@@ -7,3 +7,4 @@ const Edge = ({notAllowed, ...props}) => {
 };
 
 export default Edge;
+

@@ -79,3 +79,4 @@ const NumberRow = ({
 };
 
 export default NumberRow;
+

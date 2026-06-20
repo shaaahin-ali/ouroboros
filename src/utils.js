@@ -189,3 +189,4 @@ export const getEdges = (mat) => {
 export const getActiveEdges = (mat) => {
   return getEdges(mat).filter((edge) => !edge?.notAllowed && !edge?.hovered);
 };
+

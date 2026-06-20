@@ -42,3 +42,4 @@ const CheckSolution = ({matrix, solution, setCheck}) => {
 };
 
 export default CheckSolution;
+

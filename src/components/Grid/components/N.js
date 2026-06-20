@@ -15,3 +15,4 @@ const N = ({className, value, setNum, editorMode, ...props}) => {
 };
 
 export default N;
+

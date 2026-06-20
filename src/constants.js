@@ -157,3 +157,4 @@ export const NOT_ALLOWED_2_GRID_PROPS = {
   ],
   numbers: [{r: 1, c: 2, n: 3}],
 };
+

@@ -175,3 +175,4 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
 };
 
 export default Grid;
+
