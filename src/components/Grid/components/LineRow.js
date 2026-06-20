@@ -1,6 +1,6 @@
 import * as React from "react";
-import {EDGE_STATE} from "../../../constants";
-import {findNeighbor, isNodeActive} from "../../../utils";
+import { EDGE_STATE } from "../../../constants";
+import { findNeighbor, isNodeActive } from "../../../utils";
 import Edge from "./Edge";
 import Node from "./Node";
 import Row from "./Row";
@@ -56,4 +56,3 @@ const LineRow = ({
 };
 
 export default LineRow;
-

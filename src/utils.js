@@ -1,5 +1,5 @@
-import {DEFAULT_NODE} from "./components/Grid";
-import {EDGE_STATE} from "./constants";
+import { DEFAULT_NODE } from "./components/Grid";
+import { EDGE_STATE } from "./constants";
 
 // get deep copy of JSON
 export const copy = (json) => JSON.parse(JSON.stringify(json));
@@ -31,15 +31,15 @@ export const getMatrix = ([dim1, dim2], edges = [], numbers = []) => {
     .map(() => new Array(dim2 + 1).fill(DEFAULT_NODE));
 
   if (numbers.length > 0) {
-    numbers.forEach(({r, c, n}) => {
+    numbers.forEach(({ r, c, n }) => {
       if (r <= nRows && c <= nCols) {
-        temp[r - 1][c - 1] = {...temp[r - 1][c - 1], n};
+        temp[r - 1][c - 1] = { ...temp[r - 1][c - 1], n };
       }
     });
   }
 
   if (edges.length > 0) {
-    edges.forEach(({a: [sx, sy], b: [ex, ey], notAllowed, hovered}) => {
+    edges.forEach(({ a: [sx, sy], b: [ex, ey], notAllowed, hovered }) => {
       const edgeState = notAllowed
         ? EDGE_STATE.NOT_ALLOWED
         : hovered
@@ -87,14 +87,14 @@ export const getMatrix = ([dim1, dim2], edges = [], numbers = []) => {
           ...temp[startX][startY],
           neigh: [
             ...temp[startX][startY].neigh,
-            {state: edgeState, loc: [endX, endY]},
+            { state: edgeState, loc: [endX, endY] },
           ],
         };
         temp[endX][endY] = {
           ...temp[endX][endY],
           neigh: [
             ...temp[endX][endY].neigh,
-            {state: edgeState, loc: [startX, startY]},
+            { state: edgeState, loc: [startX, startY] },
           ],
         };
       }
@@ -117,7 +117,7 @@ export const getNeighbors = ([ax, ay], mat) => {
 // to check if two nodes are neighbor in a matrix
 export const findNeighbor = ([ax, ay], [bx, by], mat) => {
   const index = mat?.[ax]?.[ay]?.neigh.findIndex(
-    ({loc}) => loc[0] === bx && loc[1] === by
+    ({ loc }) => loc[0] === bx && loc[1] === by
   );
   return isNaN(index) ? -1 : index;
 };
@@ -137,7 +137,7 @@ export const getNumbers = (mat) => {
       if (c >= nCol - 1) return;
       numbers = [
         ...numbers,
-        ...(node.n > -1 ? [{r: r + 1, c: c + 1, n: node.n}] : []),
+        ...(node.n > -1 ? [{ r: r + 1, c: c + 1, n: node.n }] : []),
       ];
     });
   });
@@ -160,9 +160,9 @@ export const getEdges = (mat) => {
               a: [sX, sY],
               b: [eX, eY],
               ...(edge?.state === EDGE_STATE.NOT_ALLOWED
-                ? {notAllowed: true}
+                ? { notAllowed: true }
                 : {}),
-              ...(edge?.state === EDGE_STATE.HOVERED ? {hovered: true} : {}),
+              ...(edge?.state === EDGE_STATE.HOVERED ? { hovered: true } : {}),
             },
           ];
         } else if (eY > sY && eX === sX) {
@@ -172,9 +172,9 @@ export const getEdges = (mat) => {
               a: [sX, sY],
               b: [eX, eY],
               ...(edge?.state === EDGE_STATE.NOT_ALLOWED
-                ? {notAllowed: true}
+                ? { notAllowed: true }
                 : {}),
-              ...(edge?.state === EDGE_STATE.HOVERED ? {hovered: true} : {}),
+              ...(edge?.state === EDGE_STATE.HOVERED ? { hovered: true } : {}),
             },
           ];
         }
@@ -189,4 +189,3 @@ export const getEdges = (mat) => {
 export const getActiveEdges = (mat) => {
   return getEdges(mat).filter((edge) => !edge?.notAllowed && !edge?.hovered);
 };
-

@@ -1,6 +1,6 @@
 import * as React from "react";
-import {EDGE_STATE} from "../../constants";
-import {areValid, findNeighbor, getNeighbors, multiStyles} from "../../utils";
+import { EDGE_STATE } from "../../constants";
+import { areValid, findNeighbor, getNeighbors, multiStyles } from "../../utils";
 import Controls from "../Controls";
 import LineRow from "./components/LineRow";
 import NumberRow from "./components/NumberRow";
@@ -20,13 +20,20 @@ import styles from "./styles.module.scss";
       V         V       V
 */
 
-export const DEFAULT_NODE = {neigh: [], n: -1};
+export const DEFAULT_NODE = { neigh: [], n: -1 };
 /* 
   structure for neigh elements: 
     {state: <EDGE_STATE>, loc: [x, y]}
 */
 
-const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
+const Grid = ({
+  matrix,
+  setMatrix,
+  readOnly,
+  editorMode,
+  state,
+  className,
+}) => {
   const nHorLine = matrix?.length || 0;
   const nVerLine = matrix?.[0]?.length || 0;
 
@@ -36,8 +43,8 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
 
   const updateMatrix = (dataArray) => {
     let temp = matrix.slice();
-    dataArray.forEach(({node: [x, y], data}) => {
-      temp[x][y] = {...temp[x][y], ...data};
+    dataArray.forEach(({ node: [x, y], data }) => {
+      temp[x][y] = { ...temp[x][y], ...data };
     });
     setMatrix(temp);
   };
@@ -67,7 +74,7 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
           ...newNeighbors,
           ...(isNewEdgeStateEmpty || isMiddleClick
             ? []
-            : [{state: EDGE_STATE.NOT_ALLOWED, loc: otherNode}]),
+            : [{ state: EDGE_STATE.NOT_ALLOWED, loc: otherNode }]),
         ],
       };
       let newOtherNeighbors = getNeighbors(otherNode, matrix).slice();
@@ -77,7 +84,7 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
           ...newOtherNeighbors,
           ...(isNewEdgeStateEmpty || isMiddleClick
             ? []
-            : [{state: EDGE_STATE.NOT_ALLOWED, loc: node}]),
+            : [{ state: EDGE_STATE.NOT_ALLOWED, loc: node }]),
         ],
       };
     } else if (!isMiddleClick) {
@@ -103,8 +110,8 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
       };
     }
     updateMatrix([
-      {node, data: nodeUpdateData},
-      {node: otherNode, data: otherNodeUpdateData},
+      { node, data: nodeUpdateData },
+      { node: otherNode, data: otherNodeUpdateData },
     ]);
   };
 
@@ -119,7 +126,7 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
     if (!editorMode || readOnly) {
       return;
     }
-    updateMatrix([{node: [x, y], data: {n: num}}]);
+    updateMatrix([{ node: [x, y], data: { n: num } }]);
   };
 
   return (
@@ -175,4 +182,3 @@ const Grid = ({matrix, setMatrix, readOnly, editorMode, state, className}) => {
 };
 
 export default Grid;
-

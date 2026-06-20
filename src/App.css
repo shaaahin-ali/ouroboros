@@ -1,8 +1,9 @@
-body, html, #root {
+body,
+html,
+#root {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
 }
-

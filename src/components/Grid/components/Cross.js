@@ -1,5 +1,5 @@
 import * as React from "react";
-import {multiStyles} from "../../../utils";
+import { multiStyles } from "../../../utils";
 import styles from "../styles.module.scss";
 
 const Cross = ({
@@ -35,4 +35,3 @@ const Cross = ({
 };
 
 export default Cross;
-

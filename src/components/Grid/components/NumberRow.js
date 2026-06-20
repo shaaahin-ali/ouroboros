@@ -1,6 +1,6 @@
 import * as React from "react";
-import {EDGE_STATE} from "../../../constants";
-import {findNeighbor} from "../../../utils";
+import { EDGE_STATE } from "../../../constants";
+import { findNeighbor } from "../../../utils";
 import Edge from "./Edge";
 import N from "./N";
 import Row from "./Row";
@@ -32,7 +32,7 @@ const NumberRow = ({
                   showEdge &&
                   mat[matX][i].neigh[edgeIdx].state === EDGE_STATE.NOT_ALLOWED
                 }
-                orientation='v'
+                orientation="v"
                 active={showEdge ? 1 : 0}
                 onClick={() => onLineClick(matX, i, "vertical")}
                 onRightClick={() => onLineRightClick(matX, i, "vertical")}
@@ -60,7 +60,7 @@ const NumberRow = ({
                 mat[matX][n - 1].neigh[endEdgeIdx].state ===
                   EDGE_STATE.NOT_ALLOWED
               }
-              orientation='v'
+              orientation="v"
               active={showEndEdge ? 1 : 0}
               onClick={() => onLineClick(matX, n - 1, "vertical")}
               onRightClick={() => onLineRightClick(matX, n - 1, "vertical")}
@@ -79,4 +79,3 @@ const NumberRow = ({
 };
 
 export default NumberRow;
-

@@ -1,10 +1,10 @@
 import * as React from "react";
 import AddPuzzleScreen from "../AddPuzzleScreen";
-import {Plus, Redo, Refresh, Reset, Undo} from "../Icons";
+import { Plus, Redo, Refresh, Reset, Undo } from "../Icons";
 
 import styles from "./styles.module.scss";
 
-const Controls = ({onRefresh, onReset, onUndo, onRedo, editorMode}) => {
+const Controls = ({ onRefresh, onReset, onUndo, onRedo, editorMode }) => {
   const [showAddScreen, setShowAddScreen] = React.useState(false);
 
   return (
@@ -48,4 +48,3 @@ const Controls = ({onRefresh, onReset, onUndo, onRedo, editorMode}) => {
 };
 
 export default Controls;
-

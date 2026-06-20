@@ -4,7 +4,7 @@ import {
   NOT_ALLOWED_1_GRID_PROPS,
   NOT_ALLOWED_2_GRID_PROPS,
 } from "../../constants";
-import {getMatrix} from "../../utils";
+import { getMatrix } from "../../utils";
 import Grid from "../Grid";
 
 import styles from "./styles.module.scss";
@@ -77,10 +77,10 @@ const Info = () => {
               Begin with the zero next to 3. If no such case is present, then
               use one of the rules in the{" "}
               <a
-                style={{display: "contents"}}
-                rel='noreferrer'
-                href='https://en.wikipedia.org/wiki/Slitherlink'
-                target='_blank'
+                style={{ display: "contents" }}
+                rel="noreferrer"
+                href="https://en.wikipedia.org/wiki/Slitherlink"
+                target="_blank"
               >
                 wikipedia link
               </a>{" "}
@@ -107,9 +107,9 @@ const Info = () => {
               already completed required lines or where a line creation may
               create a branch or a deadend. Visit the{" "}
               <a
-                rel='noreferrer'
-                href='https://en.wikipedia.org/wiki/Slitherlink'
-                target='_blank'
+                rel="noreferrer"
+                href="https://en.wikipedia.org/wiki/Slitherlink"
+                target="_blank"
               >
                 wikipedia link
               </a>{" "}
@@ -148,4 +148,3 @@ const Info = () => {
 };
 
 export default Info;
-

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {multiStyles} from "../../../utils";
+import { multiStyles } from "../../../utils";
 import styles from "../styles.module.scss";
 
 const Line = ({
@@ -34,4 +34,3 @@ const Line = ({
 };
 
 export default Line;
-

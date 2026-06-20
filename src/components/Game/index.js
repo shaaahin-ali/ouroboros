@@ -1,6 +1,6 @@
 import * as React from "react";
-import {examples} from "../../examples";
-import {copy, getEdges, getMatrix} from "../../utils";
+import { examples } from "../../examples";
+import { copy, getEdges, getMatrix } from "../../utils";
 import CheckSolution from "../CheckSolution";
 import Controls from "../Controls";
 import Grid from "../Grid";
@@ -24,7 +24,7 @@ const Game = () => {
   }, []);
 
   const [puzzle, setPuzzle] = React.useState(() => getRandomPuzzle("all"));
-  const {dim = [], numbers, solution} = puzzle;
+  const { dim = [], numbers, solution } = puzzle;
 
   const [matrix, setMatrix] = React.useState([]);
   const [history, setHistory] = React.useState([]);
@@ -134,7 +134,7 @@ const Game = () => {
       {/* Confetti */}
       {showConfetti && (
         <div className={styles.confettiContainer}>
-          {Array.from({length: 50}).map((_, i) => (
+          {Array.from({ length: 50 }).map((_, i) => (
             <div
               key={i}
               className={styles.confetti}
@@ -170,9 +170,9 @@ const Game = () => {
       {/* Difficulty Selector */}
       <div className={styles.difficultyBar}>
         {[
-          {key: "easy", label: "Easy", icon: "◇"},
-          {key: "medium", label: "Medium", icon: "◆"},
-          {key: "all", label: "All", icon: "✦"},
+          { key: "easy", label: "Easy", icon: "◇" },
+          { key: "medium", label: "Medium", icon: "◆" },
+          { key: "all", label: "All", icon: "✦" },
         ].map((d) => (
           <button
             key={d.key}
@@ -231,4 +231,3 @@ const Game = () => {
 };
 
 export default Game;
-

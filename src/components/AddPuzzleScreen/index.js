@@ -1,12 +1,12 @@
 import * as React from "react";
-import {getMatrix, getNumbers, multiStyles} from "../../utils";
+import { getMatrix, getNumbers, multiStyles } from "../../utils";
 import Controls from "../Controls";
 import Grid from "../Grid";
 import N from "../Grid/components/N";
 
 import styles from "./styles.module.scss";
 
-const AddPuzzleScreen = ({open, onClose}) => {
+const AddPuzzleScreen = ({ open, onClose }) => {
   const [dim, setDim] = React.useState([3, 3]);
   const [gridMat, setGridMat] = React.useState([]);
   const [gridNumbers, setGridNumbers] = React.useState([]);
@@ -117,4 +117,3 @@ const AddPuzzleScreen = ({open, onClose}) => {
 };
 
 export default AddPuzzleScreen;
-

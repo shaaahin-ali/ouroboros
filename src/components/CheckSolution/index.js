@@ -1,9 +1,9 @@
 import * as React from "react";
-import {getActiveEdges, multiStyles} from "../../utils";
+import { getActiveEdges, multiStyles } from "../../utils";
 
 import styles from "./styles.module.scss";
 
-const CheckSolution = ({matrix, solution, setCheck}) => {
+const CheckSolution = ({ matrix, solution, setCheck }) => {
   const [text, setText] = React.useState("Check Solution");
   const [state, setState] = React.useState("none");
 
@@ -42,4 +42,3 @@ const CheckSolution = ({matrix, solution, setCheck}) => {
 };
 
 export default CheckSolution;
-

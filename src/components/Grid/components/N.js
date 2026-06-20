@@ -1,8 +1,8 @@
 import * as React from "react";
-import {multiStyles} from "../../../utils";
+import { multiStyles } from "../../../utils";
 import styles from "../styles.module.scss";
 
-const N = ({className, value, setNum, editorMode, ...props}) => {
+const N = ({ className, value, setNum, editorMode, ...props }) => {
   return (
     <span className={multiStyles(styles, ["number", className])} {...props}>
       <input
@@ -15,4 +15,3 @@ const N = ({className, value, setNum, editorMode, ...props}) => {
 };
 
 export default N;
-
