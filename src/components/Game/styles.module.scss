@@ -1,32 +1,262 @@
-main {
-  font-size: 24px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #23262f;
-  height: 100%;
+/* ============================
+   Game — Main Layout & Branding
+   ============================ */
+
+.main {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+  min-height: 100vh;
   width: 100%;
-  color: #fafafa;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 24px;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 0 22px;
+  padding: 32px 20px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .heading {
-  font-size: 25px;
-  text-align: center;
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 
-  span {
-    color: #7986cb;
+.logoIcon {
+  font-size: 36px;
+  background: linear-gradient(135deg, #06d6a0, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: iconPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(6, 214, 160, 0.4));
+}
 
-    &:nth-of-type(even) {
-      color: #8c9eff;
-    }
+@keyframes iconPulse {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+}
 
-    &:nth-of-type(odd) {
-      color: #64b5f6;
-    }
+.logoText {
+  background: linear-gradient(135deg, #06d6a0 0%, #3b82f6 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientFlow 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(6, 214, 160, 0.3));
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---- Difficulty Selector ---- */
+.difficultyBar {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--border-glass);
+  border-radius: var(--radius-xl);
+}
+
+.diffBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  letter-spacing: 0.5px;
+
+  &:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.diffActive {
+  background: rgba(6, 214, 160, 0.12) !important;
+  color: var(--accent-cyan) !important;
+  box-shadow: inset 0 0 20px rgba(6, 214, 160, 0.06);
+}
+
+.diffIcon {
+  font-size: 10px;
+}
+
+/* ---- Stats Bar ---- */
+.statsBar {
+  display: flex;
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 22px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--border-glass);
+  border-radius: var(--radius-md);
+  min-width: 80px;
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: rgba(6, 214, 160, 0.2);
+    box-shadow: 0 0 20px rgba(6, 214, 160, 0.05);
+  }
+}
+
+.statIcon {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.statValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
+}
+
+.statLabel {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+/* ---- Board Wrapper ---- */
+.boardWrapper {
+  position: relative;
+  padding: 4px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(6, 214, 160, 0.15), rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+  box-shadow:
+    0 0 30px rgba(6, 214, 160, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Confetti ---- */
+.confettiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+  opacity: 0;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .main {
+    padding: 20px 12px 100px;
+    gap: 16px;
+  }
+
+  .heading {
+    font-size: 28px;
+    gap: 8px;
+  }
+
+  .logoIcon {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .difficultyBar {
+    gap: 4px;
+  }
+
+  .diffBtn {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .statsBar {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat {
+    padding: 8px 16px;
+    min-width: 70px;
+  }
+
+  .statValue {
+    font-size: 15px;
   }
 }

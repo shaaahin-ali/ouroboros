@@ -1,28 +1,29 @@
-$gridColor: #607d8b;
-$gridActiveColor: #90a4ae;
-$gridHoverColor: #eceff1;
-$invalidColor: #ff8a80;
-$validColor: #00e676;
+/* ============================
+   Grid — Core Puzzle Board
+   ============================ */
 
-$transitionDuration: 0.2s;
+$gridColor: #334155;
+$gridActiveColor: #06d6a0;
+$gridHoverColor: rgba(6, 214, 160, 0.5);
+$invalidColor: #f87171;
+$validColor: #34d399;
+
+$transitionDuration: 0.25s;
 
 $gridScale: 1;
 
-$nodeSize: $gridScale * 6px;
-@media (max-width: 500px) {
-  $gridScale: 0.5;
-}
-$nodeActiveSize: $gridScale * 7px;
+$nodeSize: $gridScale * 8px;
+$nodeActiveSize: $gridScale * 10px;
 
-$edgeLength: $gridScale * 50px;
-$edgeBreadth: $gridScale * 2px;
+$edgeLength: $gridScale * 52px;
+$edgeBreadth: $gridScale * 3px;
 
-$fontSize: $gridScale * 24px;
+$fontSize: $gridScale * 22px;
 
-$animationSeperation: 0.075s;
-$animationScale: 1.5;
-$animationDuration: 0.25s;
-$animationTimingFunction: linear;
+$animationSeperation: 0.06s;
+$animationScale: 1.4;
+$animationDuration: 0.3s;
+$animationTimingFunction: cubic-bezier(0.4, 0, 0.2, 1);
 $animationFillMode: forwards;
 
 // canvas
@@ -38,9 +39,13 @@ $animationFillMode: forwards;
   overflow-x: auto;
   box-sizing: border-box;
   max-width: 100%;
-  padding: 50px;
-  border-radius: 10px;
-  background-color: #282c34;
+  padding: 40px 44px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
 
   &.readOnly, &.passed {
     * {
@@ -58,13 +63,15 @@ $animationFillMode: forwards;
   background-color: $gridColor;
   border-radius: 50%;
   z-index: 1;
-  transition: background-color $transitionDuration;
+  transition: all $transitionDuration cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 4px rgba(51, 65, 85, 0.3);
 
   &.active {
     background-color: $gridActiveColor;
     width: $nodeActiveSize;
     height: $nodeActiveSize;
     margin: - ($nodeActiveSize - $nodeSize) / 2;
+    box-shadow: 0 0 12px rgba(6, 214, 160, 0.5), 0 0 24px rgba(6, 214, 160, 0.15);
   }
 }
 
@@ -76,6 +83,7 @@ $animationFillMode: forwards;
   position: relative;
   cursor: pointer;
   $interactionOffset: ($nodeSize - $edgeBreadth) * 4;
+  transition: all $transitionDuration cubic-bezier(0.4, 0, 0.2, 1);
 
   &:after, &:before {
     content: "";
@@ -85,7 +93,7 @@ $animationFillMode: forwards;
 
   &.horizontal {
     background-size: 4*$edgeBreadth 100%;
-    background-image: linear-gradient(90deg, $lineColor 50%, transparent 50%);
+    background-image: linear-gradient(90deg, rgba(71, 85, 105, 0.4) 50%, transparent 50%);
     height: $edgeBreadth;
     width: $edgeLength;
 
@@ -106,7 +114,7 @@ $animationFillMode: forwards;
 
   &.vertical {
     background-size: 100% 4*$edgeBreadth;
-    background-image: linear-gradient(180deg, $lineColor 50%, transparent 50%);
+    background-image: linear-gradient(180deg, rgba(71, 85, 105, 0.4) 50%, transparent 50%);
     height: $edgeLength;
     width: $edgeBreadth;
     margin: 0 ($nodeSize - $edgeBreadth) / 2;
@@ -131,13 +139,21 @@ $animationFillMode: forwards;
     opacity: 1;
   }
 
+  &:hover:not(.active):not(.cross) {
+    background: $gridHoverColor !important;
+    box-shadow: 0 0 8px rgba(6, 214, 160, 0.2);
+  }
+
   &.active {
     opacity: 1;
     background: $gridActiveColor;
-    transition: background-color $transitionDuration;
+    border-radius: 2px;
+    transition: all $transitionDuration cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(6, 214, 160, 0.4), 0 0 20px rgba(6, 214, 160, 0.1);
 
     &:hover {
-      background: $gridHoverColor;
+      background: lighten($gridActiveColor, 15%);
+      box-shadow: 0 0 15px rgba(6, 214, 160, 0.6), 0 0 30px rgba(6, 214, 160, 0.2);
 
       &.horizontal {
         height: 1.5 * $edgeBreadth;
@@ -161,7 +177,7 @@ $animationFillMode: forwards;
       position: absolute;
       width: 6 * $edgeBreadth;
       height: 3 * $edgeBreadth / 4;
-      background-color: $invalidColor;
+      background-color: rgba($invalidColor, 0.6);
       border-radius: 2 * $edgeBreadth;
       transition: all $transitionDuration;
 
@@ -178,7 +194,8 @@ $animationFillMode: forwards;
       & > span {
         width: 7 * $edgeBreadth;
         height: $edgeBreadth;
-        background-color: $gridHoverColor;
+        background-color: #fca5a5;
+        box-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
       }
     }
   }
@@ -186,11 +203,15 @@ $animationFillMode: forwards;
 
 .number {
   font-size: $fontSize;
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   height: $edgeLength;
   width: $edgeLength;
+  color: #94a3b8;
+  text-shadow: 0 0 8px rgba(148, 163, 184, 0.15);
 
   .invalid {
     color: $invalidColor;
@@ -206,29 +227,45 @@ $animationFillMode: forwards;
     border: inherit;
     color: inherit;
     font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
     display: inherit;
     align-items: inherit;
     justify-content: inherit;
     cursor: inherit;
+    text-shadow: inherit;
   }
 }
 
+/* ---- Failed State ---- */
 .canvas.failed {
+  animation: boardShake 0.4s ease-in-out;
+
   .node.active  {
     background-color: $invalidColor;
+    box-shadow: 0 0 12px rgba(248, 113, 113, 0.5), 0 0 24px rgba(248, 113, 113, 0.15);
   }
 
   .line {
     &:not(.cross){
       &:not(:hover) {
-        background-color: $invalidColor;      
+        background-color: $invalidColor;
+        box-shadow: 0 0 10px rgba(248, 113, 113, 0.4);
       }
     }
   }
 }
 
-.canvas.passed {
+@keyframes boardShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
 
+/* ---- Passed State ---- */
+.canvas.passed {
   .node.active {
     animation: node $animationDuration $animationTimingFunction $animationFillMode;
   }
@@ -244,7 +281,7 @@ $animationFillMode: forwards;
   }
 
   .node.active, .line:not(.cross) {
-    @for $i from 1 through 50 {
+    @for $i from 1 through 60 {
       &:nth-child(#{$i}) {
         animation-delay: ($i - 1) * $animationSeperation;
       }
@@ -257,13 +294,16 @@ $animationFillMode: forwards;
   0% {
     background-color: $validColor;
     transform: scale(1);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
   }
   50% {
     transform: scale($animationScale);
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.8), 0 0 50px rgba(52, 211, 153, 0.3);
   }
   100% {
     background-color: $validColor;
     transform: scale(1);
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.6), 0 0 30px rgba(52, 211, 153, 0.15);
   }
 }
 
@@ -271,13 +311,16 @@ $animationFillMode: forwards;
   0% {
     background-color: $validColor;
     transform: scaleY(1);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
   }
   50% {
     transform: scaleY(1.5 * $animationScale);
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.8);
   }
   100% {
     background-color: $validColor;
     transform: scaleY(1);
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.6), 0 0 30px rgba(52, 211, 153, 0.15);
   }
 }
 
@@ -286,12 +329,23 @@ $animationFillMode: forwards;
   0% {
     background-color: $validColor;
     transform: scaleX(1);
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
   }
   50% {
     transform: scaleX(1.5 * $animationScale);
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.8);
   }
   100% {
     background-color: $validColor;
     transform: scaleX(1);
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.6), 0 0 30px rgba(52, 211, 153, 0.15);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 500px) {
+  .canvas {
+    padding: 24px 28px;
+    border-radius: 12px;
   }
 }

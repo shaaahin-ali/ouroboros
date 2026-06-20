@@ -54,7 +54,7 @@ module.exports = {
     ],
     "react/no-array-index-key": "warn",
     "no-shadow": "off",
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": "off",
     "prettier/prettier": [
       "error",
       {
@@ -72,6 +72,7 @@ module.exports = {
         importOrder: ["^[./]"],
         importOrderSeparation: true,
         importOrderSortSpecifiers: true,
+        endOfLine: "auto",
       },
     ],
   },
